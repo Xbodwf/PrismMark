@@ -1,0 +1,52 @@
+.direction-button {
+  /* 移除固定的width和height，改为通过style属性动态设置 */
+  border-radius: 50%;
+  background: rgba(0, 255, 136, 0.9);
+  border: 2px solid #00ff88;
+  color: #000;
+  font-weight: bold;
+  /* 移除固定的font-size，改为通过style属性动态设置 */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  font-family: "Lexend", sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 255, 136, 0.3);
+  backdrop-filter: blur(5px);
+  /* 确保按钮内容居中 */
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  /* 防止文字选中 */
+  user-select: none;
+  -webkit-user-select: none;
+  /* 确保在所有缩放级别下都可点击 */
+  pointer-events: auto;
+}
+
+.direction-button:hover {
+  background: rgba(0, 255, 136, 1);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 255, 136, 0.5);
+}
+
+.direction-button:active {
+  transform: scale(0.95);
+}
+
+/* 确保在小尺寸下仍然可见 */
+.direction-button {
+  min-width: 20px;
+  min-height: 20px;
+  min-font-size: 8px;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .direction-button {
+    /* 在移动设备上稍微增大触摸目标 */
+    min-width: 24px;
+    min-height: 24px;
+  }
+}

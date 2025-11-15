@@ -1,0 +1,38 @@
+{
+   "property": {
+       "version": 1.0,
+       "song": {
+         "name": "Arche",
+         "artists": [
+            {"name":"Camellia","link":"https://youtube.com/@Camellia_Official"}
+         ],
+         "bpm": 340,
+         "offset": 0,
+         "volume": 1.0,
+         "thumb": "./circleArc.png"
+       },
+       "level": {
+           "authors": [
+             {"name":"Xbodwf","link":""}
+           ],
+           "levelTags":[
+              "difficult",
+              "camellia",
+              "arche"
+           ],
+           "hitsoundVolume": 0.5,
+           "hitsound":{
+               "type": "internal",
+               "name": "Kick"
+           },
+           "previewColor": "#debb7bff",
+           "defaultRailColor":["#debb7bff","#00ff00ff"]
+       }
+   },
+   "content": [
+       //contents.
+   ],
+   "addons": [
+       //events
+   ]
+}

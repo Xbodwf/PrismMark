@@ -1,0 +1,379 @@
+/* Player页面样式 - 基于Editor但移除编辑相关元素 */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.player-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #1a1a1a;
+  margin: 0;
+  padding: 0;
+}
+
+.player-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  margin: 0;
+  padding: 0;
+  cursor: crosshair;
+}
+
+.player-ui {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 100;
+  margin: 0;
+  padding: 0;
+}
+
+.player-info {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 15px;
+  border-radius: 10px;
+  color: white;
+  font-family: "Lexend", sans-serif;
+  pointer-events: auto;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  min-width: 200px;
+  max-width: 300px;
+}
+
+.player-info h3 {
+  margin: 0 0 10px 0;
+  color: #00ff88;
+  font-size: 1.2em;
+}
+
+.player-info p {
+  margin: 5px 0;
+  font-size: 0.9em;
+}
+
+.judgment {
+  font-weight: bold;
+  font-size: 1.1em !important;
+  text-transform: uppercase;
+}
+
+.judgment.perfect {
+  color: #00ff88;
+}
+.judgment.slightly_fast,
+.judgment.slightly_slow {
+  color: #88ff00;
+}
+.judgment.fast,
+.judgment.slow {
+  color: #ffaa00;
+}
+.judgment.too_fast,
+.judgment.too_slow {
+  color: #ff6600;
+}
+.judgment.miss {
+  color: #ff0000;
+}
+.judgment.empty_hit {
+  color: #666666;
+}
+
+.player-controls {
+  position: absolute;
+  bottom: 80px;
+  left: 20px;
+  display: flex;
+  gap: 10px;
+  pointer-events: auto;
+  z-index: 101;
+}
+
+.player-btn {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 0;
+  padding: 0;
+}
+
+.player-btn:hover {
+  background: rgba(0, 255, 136, 0.2);
+  border-color: #00ff88;
+  transform: scale(1.1);
+}
+
+.player-btn.primary {
+  background: rgba(0, 255, 136, 0.3);
+  border-color: #00ff88;
+}
+
+.player-modes {
+  position: absolute;
+  bottom: 80px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  pointer-events: auto;
+  z-index: 101;
+}
+
+.mode-btn {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 0;
+  padding: 0;
+}
+
+.mode-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+.mode-btn.active {
+  background: rgba(0, 255, 136, 0.3);
+  border-color: #00ff88;
+  color: #00ff88;
+}
+
+.player-back {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: "Lexend", sans-serif;
+  pointer-events: auto;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  margin: 0;
+  z-index: 101;
+}
+
+.player-back:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  color: white;
+  font-family: "Lexend", sans-serif;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid #00ff88;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  font-size: 1.2rem;
+  color: #00ff88;
+  margin-bottom: 10px;
+}
+
+.loading-subtitle {
+  font-size: 0.9rem;
+  color: #ccc;
+  text-align: center;
+  max-width: 400px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .player-info {
+    top: 10px;
+    left: 10px;
+    padding: 10px;
+    font-size: 0.8em;
+    min-width: 150px;
+    max-width: 250px;
+  }
+
+  .player-controls {
+    bottom: 70px;
+    left: 10px;
+    gap: 8px;
+  }
+
+  .player-btn {
+    width: 45px;
+    height: 45px;
+  }
+
+  .player-modes {
+    bottom: 70px;
+    right: 10px;
+    gap: 8px;
+  }
+
+  .mode-btn {
+    width: 45px;
+    height: 45px;
+  }
+
+  .player-back {
+    top: 10px;
+    right: 10px;
+    padding: 8px 15px;
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  .player-info {
+    top: 5px;
+    left: 5px;
+    padding: 8px;
+    font-size: 0.7em;
+    min-width: 120px;
+    max-width: 200px;
+  }
+
+  .player-controls {
+    bottom: 60px;
+    left: 5px;
+    gap: 5px;
+  }
+
+  .player-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .player-modes {
+    bottom: 60px;
+    right: 5px;
+    gap: 5px;
+  }
+
+  .mode-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .player-back {
+    top: 5px;
+    right: 5px;
+    padding: 6px 12px;
+    font-size: 0.8em;
+  }
+}
+
+/* 触摸设备优化 */
+@media (hover: none) {
+  .player-btn:hover,
+  .mode-btn:hover,
+  .player-back:hover {
+    transform: none;
+  }
+
+  .player-btn:active {
+    transform: scale(0.95);
+  }
+
+  .player-back:active {
+    transform: translateY(1px);
+  }
+
+  .player-controls {
+    bottom: 90px;
+  }
+
+  .player-modes {
+    bottom: 90px;
+  }
+}
+
+/* 安全区域适配 */
+@supports (padding: max(0px)) {
+  .player-controls {
+    bottom: max(80px, env(safe-area-inset-bottom, 0px) + 20px);
+    left: max(20px, env(safe-area-inset-left, 0px) + 20px);
+  }
+
+  .player-modes {
+    bottom: max(80px, env(safe-area-inset-bottom, 0px) + 20px);
+    right: max(20px, env(safe-area-inset-right, 0px) + 20px);
+  }
+
+  .player-info {
+    top: max(20px, env(safe-area-inset-top, 0px) + 20px);
+    left: max(20px, env(safe-area-inset-left, 0px) + 20px);
+  }
+
+  .player-back {
+    top: max(20px, env(safe-area-inset-top, 0px) + 20px);
+    right: max(20px, env(safe-area-inset-right, 0px) + 20px);
+  }
+}

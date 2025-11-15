@@ -1,0 +1,362 @@
+/* 重置所有样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.converter-container {
+  width: 100vw;
+  height: 100vh;
+  background: #1a1a1a;
+  color: white;
+  font-family: "Lexend", sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.converter-header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 20px;
+  background: rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+}
+
+.back-button {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.converter-header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #00ff88;
+  flex: 1;
+  margin: 0;
+}
+
+.converter-content {
+  flex: 1;
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 70px);
+  overflow: hidden;
+}
+
+.input-section,
+.output-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  overflow-y: auto;
+  width: 50%;
+}
+
+.input-section {
+  background: rgba(0, 0, 0, 0.3);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.output-section {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #00ff88;
+  margin: 0 0 20px 0;
+  flex-shrink: 0;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: white;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #00ff88;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.form-group textarea {
+  resize: vertical;
+  font-family: "Courier New", monospace;
+  min-height: 120px;
+}
+
+.file-upload-area {
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.file-upload-area:hover {
+  border-color: #00ff88;
+  background: rgba(0, 255, 136, 0.05);
+}
+
+.file-upload-area.dragover {
+  border-color: #00ff88;
+  background: rgba(0, 255, 136, 0.1);
+}
+
+.file-upload-input {
+  display: none;
+}
+
+.upload-text {
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+.upload-text strong {
+  color: #00ff88;
+}
+
+.convert-button {
+  width: 100%;
+  padding: 15px;
+  background: #00ff88;
+  color: #000;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: auto;
+  flex-shrink: 0;
+}
+
+.convert-button:hover:not(:disabled) {
+  background: #00cc6a;
+  transform: translateY(-2px);
+}
+
+.convert-button:disabled {
+  background: #666;
+  color: #999;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.output-textarea {
+  flex: 1;
+  width: 100%;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #ccc;
+  font-family: "Courier New", monospace;
+  font-size: 0.85rem;
+  resize: none;
+  margin-bottom: 15px;
+}
+
+.export-button {
+  width: 100%;
+  padding: 12px;
+  background: rgba(0, 255, 136, 0.2);
+  color: #00ff88;
+  border: 1px solid #00ff88;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.export-button:hover:not(:disabled) {
+  background: rgba(0, 255, 136, 0.3);
+}
+
+.export-button:disabled {
+  background: rgba(102, 102, 102, 0.2);
+  color: #666;
+  border-color: #666;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #ff6666;
+  font-size: 0.85rem;
+  margin-top: 8px;
+  padding: 8px;
+  background: rgba(255, 102, 102, 0.1);
+  border-radius: 4px;
+  border-left: 3px solid #ff6666;
+}
+
+.info-text {
+  color: #888;
+  font-size: 0.85rem;
+  margin-bottom: 15px;
+  line-height: 1.4;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+}
+
+.stats-info {
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 0.85rem;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .converter-header {
+    padding: 12px 15px;
+  }
+
+  .converter-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .converter-content {
+    flex-direction: column;
+    height: calc(100vh - 60px);
+  }
+
+  .input-section,
+  .output-section {
+    width: 100%;
+    flex: 1;
+    padding: 15px;
+  }
+
+  .input-section {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .form-group textarea {
+    min-height: 80px;
+  }
+
+  .file-upload-area {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .converter-header {
+    padding: 10px;
+  }
+
+  .converter-header h1 {
+    font-size: 1.3rem;
+  }
+
+  .input-section,
+  .output-section {
+    padding: 10px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .convert-button {
+    padding: 12px;
+    font-size: 1rem;
+  }
+}
+
+/* 确保滚动条样式 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 136, 0.5);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 136, 0.7);
+}

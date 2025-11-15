@@ -1,0 +1,341 @@
+/* 重置默认样式 */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.editor-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #1a1a1a;
+  margin: 0;
+  padding: 0;
+}
+
+.game-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  margin: 0;
+  padding: 0;
+  cursor: crosshair;
+}
+
+.ui-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 100;
+  margin: 0;
+  padding: 0;
+}
+
+.info-panel {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 15px;
+  border-radius: 10px;
+  color: white;
+  font-family: "Lexend", sans-serif;
+  pointer-events: auto;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  min-width: 200px;
+  max-width: 300px;
+}
+
+.info-panel h3 {
+  margin: 0 0 10px 0;
+  color: #00ff88;
+  font-size: 1.2em;
+}
+
+.info-panel p {
+  margin: 5px 0;
+  font-size: 0.9em;
+}
+
+.judgment {
+  font-weight: bold;
+  font-size: 1.1em !important;
+  text-transform: uppercase;
+}
+
+.judgment.perfect {
+  color: #00ff88;
+}
+.judgment.slightly_fast,
+.judgment.slightly_slow {
+  color: #88ff00;
+}
+.judgment.fast,
+.judgment.slow {
+  color: #ffaa00;
+}
+.judgment.too_fast,
+.judgment.too_slow {
+  color: #ff6600;
+}
+.judgment.miss {
+  color: #ff0000;
+}
+.judgment.empty_hit {
+  color: #666666;
+}
+
+.control-panel {
+  position: absolute;
+  bottom: 80px;
+  left: 20px;
+  display: flex;
+  gap: 10px;
+  pointer-events: auto;
+  z-index: 101;
+}
+
+.control-btn {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 0;
+  padding: 0;
+}
+
+.control-btn:hover {
+  background: rgba(0, 255, 136, 0.2);
+  border-color: #00ff88;
+  transform: scale(1.1);
+}
+
+.start-btn {
+  background: rgba(0, 255, 136, 0.3);
+  border-color: #00ff88;
+}
+
+.file-input input {
+  display: none;
+}
+
+.mode-panel {
+  position: absolute;
+  bottom: 80px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  pointer-events: auto;
+  z-index: 101;
+}
+
+.mode-btn {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 0;
+  padding: 0;
+}
+
+.mode-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+.mode-btn.active {
+  background: rgba(0, 255, 136, 0.3);
+  border-color: #00ff88;
+  color: #00ff88;
+}
+
+.back-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: "Lexend", sans-serif;
+  pointer-events: auto;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  margin: 0;
+  z-index: 101;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* 禁用全屏请求 */
+.editor-container:fullscreen {
+  /* 如果已经全屏，保持现状 */
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .info-panel {
+    top: 10px;
+    left: 10px;
+    padding: 10px;
+    font-size: 0.8em;
+    min-width: 150px;
+    max-width: 250px;
+  }
+
+  .control-panel {
+    bottom: 70px;
+    left: 10px;
+    gap: 8px;
+  }
+
+  .control-btn {
+    width: 45px;
+    height: 45px;
+  }
+
+  .mode-panel {
+    bottom: 70px;
+    right: 10px;
+    gap: 8px;
+  }
+
+  .mode-btn {
+    width: 45px;
+    height: 45px;
+  }
+
+  .back-btn {
+    top: 10px;
+    right: 10px;
+    padding: 8px 15px;
+    font-size: 0.9em;
+  }
+}
+
+/* 小屏幕优化 */
+@media (max-width: 480px) {
+  .info-panel {
+    top: 5px;
+    left: 5px;
+    padding: 8px;
+    font-size: 0.7em;
+    min-width: 120px;
+    max-width: 200px;
+  }
+
+  .control-panel {
+    bottom: 60px;
+    left: 5px;
+    gap: 5px;
+  }
+
+  .control-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .mode-panel {
+    bottom: 60px;
+    right: 5px;
+    gap: 5px;
+  }
+
+  .mode-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .back-btn {
+    top: 5px;
+    right: 5px;
+    padding: 6px 12px;
+    font-size: 0.8em;
+  }
+}
+
+/* 触摸设备优化 */
+@media (hover: none) {
+  .control-btn:hover,
+  .mode-btn:hover,
+  .back-btn:hover {
+    transform: none;
+  }
+
+  .control-btn:active {
+    transform: scale(0.95);
+  }
+
+  .back-btn:active {
+    transform: translateY(1px);
+  }
+
+  .control-panel {
+    bottom: 90px;
+  }
+
+  .mode-panel {
+    bottom: 90px;
+  }
+}
+
+/* 安全区域适配 */
+@supports (padding: max(0px)) {
+  .control-panel {
+    bottom: max(80px, env(safe-area-inset-bottom, 0px) + 20px);
+    left: max(20px, env(safe-area-inset-left, 0px) + 20px);
+  }
+
+  .mode-panel {
+    bottom: max(80px, env(safe-area-inset-bottom, 0px) + 20px);
+    right: max(20px, env(safe-area-inset-right, 0px) + 20px);
+  }
+
+  .info-panel {
+    top: max(20px, env(safe-area-inset-top, 0px) + 20px);
+    left: max(20px, env(safe-area-inset-left, 0px) + 20px);
+  }
+
+  .back-btn {
+    top: max(20px, env(safe-area-inset-top, 0px) + 20px);
+    right: max(20px, env(safe-area-inset-right, 0px) + 20px);
+  }
+}
